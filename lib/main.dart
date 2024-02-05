@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_master/pages/animation/pong_like.dart';
 import 'package:widget_master/pages/third_page.dart';
 import 'parts/member_item.dart';
 import 'pages/first_page.dart';
@@ -49,7 +50,8 @@ class _MyHomePageState extends State<MyHomePage>
         children: <Widget>[
           FirstPage(list: memberList),
           SecondPage(),
-          ThirdPage()
+          ThirdPage(),
+          PongLike(),
         ],
         controller: controller,
       ),
@@ -63,6 +65,9 @@ class _MyHomePageState extends State<MyHomePage>
           ),
           Tab(
             icon: Icon(Icons.looks_3, color: Colors.redAccent),
+          ),
+          Tab(
+            icon: Icon(Icons.looks_4, color: Colors.greenAccent),
           ),
         ],
         controller: controller,
@@ -80,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void initState() {
     super.initState();
-    controller = TabController(length: 3, vsync: this);
+    controller = TabController(length: 4, vsync: this);
 
     memberList.add(MemberItem(path: 'lib/resources/img1.png', name: 'michael'));
     memberList.add(MemberItem(path: 'lib/resources/img2.png', name: 'jessi'));
