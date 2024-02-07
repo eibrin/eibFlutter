@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_master/pages/animation/pong_like.dart';
+import 'package:widget_master/pages/fourth_page.dart';
 import 'package:widget_master/pages/third_page.dart';
 import 'parts/member_item.dart';
 import 'pages/first_page.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -51,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage>
           FirstPage(list: memberList),
           SecondPage(),
           ThirdPage(),
+          FourthPage(),
           PongLike(),
         ],
         controller: controller,
@@ -69,6 +72,9 @@ class _MyHomePageState extends State<MyHomePage>
           Tab(
             icon: Icon(Icons.looks_4, color: Colors.greenAccent),
           ),
+          Tab(
+            icon: Icon(Icons.looks_5, color: Colors.greenAccent),
+          ),
         ],
         controller: controller,
       ),
@@ -85,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void initState() {
     super.initState();
-    controller = TabController(length: 4, vsync: this);
+    controller = TabController(length: 5, vsync: this);
 
     memberList.add(MemberItem(path: 'lib/resources/img1.png', name: 'michael'));
     memberList.add(MemberItem(path: 'lib/resources/img2.png', name: 'jessi'));
