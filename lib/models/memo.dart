@@ -4,7 +4,7 @@ class Memo {
   bool? active;
   int? id;
 
-  Memo(this.title, this.content, {this.active = false, this.id});
+  Memo({this.title, this.content, this.active = false, this.id});
 
   Map<String, dynamic> toMap() {
     return {

@@ -25,6 +25,7 @@ class _PongLikeState extends State<PongLike>
 
   @override
   void initState() {
+    super.initState();
     posX = 0;
     posY = 0;
     controller = AnimationController(
@@ -40,7 +41,6 @@ class _PongLikeState extends State<PongLike>
       });
     });
     controller.forward();
-    super.initState();
   }
 
   @override

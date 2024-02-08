@@ -24,34 +24,39 @@ class _HandleDBState extends State<HandleDB> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.all(10),
-          child: TextField(
-            controller: tcTitle,
-            decoration: InputDecoration(labelText: '제목'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Add database item'),
+      ),
+      body: Center(
+          child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              controller: tcTitle,
+              decoration: InputDecoration(labelText: '제목'),
+            ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(10),
-          child: TextField(
-            controller: tcContent,
-            decoration: InputDecoration(labelText: '내용'),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              controller: tcContent,
+              decoration: InputDecoration(labelText: '내용'),
+            ),
           ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Memo memo = Memo(
-                title: tcTitle.value.text,
-                content: tcContent.value.text,
-                active: false);
-            Navigator.of(context).pop(memo);
-          },
-          child: Text('저장'),
-        )
-      ],
-    ));
+          ElevatedButton(
+            onPressed: () {
+              Memo memo = Memo(
+                  title: tcTitle.value.text,
+                  content: tcContent.value.text,
+                  active: true);
+              Navigator.of(context).pop(memo);
+            },
+            child: Text('저장'),
+          )
+        ],
+      )),
+    );
   }
 }
