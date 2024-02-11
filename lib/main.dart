@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:widget_master/pages/animation/bmi_ani.dart';
 import 'package:widget_master/pages/animation/pong_like.dart';
 import 'package:widget_master/pages/fourth_page.dart';
 import 'package:widget_master/pages/third_page.dart';
+import 'pages/native.dart';
 import 'parts/member_item.dart';
 import 'pages/first_page.dart';
 import 'pages/second_page.dart';
@@ -54,7 +56,8 @@ class _MyHomePageState extends State<MyHomePage>
           SecondPage(),
           ThirdPage(),
           FourthPage(),
-          PongLike(),
+          BMIAni(),
+          Native(),
         ],
         controller: controller,
       ),
@@ -75,6 +78,9 @@ class _MyHomePageState extends State<MyHomePage>
           Tab(
             icon: Icon(Icons.looks_5, color: Colors.greenAccent),
           ),
+          Tab(
+            icon: Icon(Icons.looks_6, color: Colors.greenAccent),
+          ),
         ],
         controller: controller,
       ),
@@ -91,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void initState() {
     super.initState();
-    controller = TabController(length: 5, vsync: this);
+    controller = TabController(length: 6, vsync: this);
 
     memberList.add(MemberItem(path: 'lib/resources/img1.png', name: 'michael'));
     memberList.add(MemberItem(path: 'lib/resources/img2.png', name: 'jessi'));
