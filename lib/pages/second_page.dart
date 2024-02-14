@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widget_master/pages/settings_page.dart';
 import '../parts/member_item.dart';
 
 class SecondPage extends StatefulWidget {
@@ -75,6 +76,11 @@ class _SecondPageState extends State<SecondPage> {
                     Image.asset('lib/resources/img3.png', width: 100),
                   ],
                 )),
+            ElevatedButton(
+                onPressed: () {
+                  //SettingsPage(databaseReference: reference, id: id);
+                },
+                child: Text('call settings')),
           ],
         ),
       ),

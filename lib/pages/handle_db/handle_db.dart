@@ -35,14 +35,14 @@ class _HandleDBState extends State<HandleDB> {
             padding: EdgeInsets.all(10),
             child: TextField(
               controller: tcTitle,
-              decoration: InputDecoration(labelText: '제목'),
+              decoration: InputDecoration(labelText: '먹은 음식'),
             ),
           ),
           Padding(
             padding: EdgeInsets.all(10),
             child: TextField(
               controller: tcContent,
-              decoration: InputDecoration(labelText: '내용'),
+              decoration: InputDecoration(labelText: '음식 섭취량'),
             ),
           ),
           ElevatedButton(

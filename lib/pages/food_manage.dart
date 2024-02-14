@@ -7,15 +7,14 @@ import '../models/memo.dart';
 import 'done_list.dart';
 import 'handle_db/handle_db.dart';
 
-class FourthPage extends StatefulWidget {
-  //DatabaseApp(this.db);
-  const FourthPage({super.key});
+class FoodManage extends StatefulWidget {
+  const FoodManage({super.key});
 
   @override
-  State<FourthPage> createState() => _FourthPageState();
+  State<FoodManage> createState() => _FoodManageState();
 }
 
-class _FourthPageState extends State<FourthPage> {
+class _FoodManageState extends State<FoodManage> {
   late Future<Database> db;
   late Future<List<Memo>> memoList;
   Memo? memo;
@@ -32,7 +31,7 @@ class _FourthPageState extends State<FourthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('음식 섭취 기록 FOOD RECORD'),
+        title: Text('Database Example'),
         actions: [
           ElevatedButton(
             onPressed: () async {
@@ -234,32 +233,6 @@ class _FourthPageState extends State<FourthPage> {
         );
       },
       version: 1,
-    );
-  }
-}
-
-class DatabaseApp extends StatefulWidget {
-  const DatabaseApp({super.key});
-
-  @override
-  State<DatabaseApp> createState() => _DatabaseAppState();
-}
-
-class _DatabaseAppState extends State<DatabaseApp> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Database Example'),
-      ),
-      body: Container(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final todo = await Navigator.of(context).pushNamed('/add');
-        },
-        child: Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

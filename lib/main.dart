@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widget_master/pages/animation/bmi_ani.dart';
 import 'package:widget_master/pages/animation/pong_like.dart';
 import 'package:widget_master/pages/fourth_page.dart';
+import 'package:widget_master/pages/settings_page.dart';
 import 'package:widget_master/pages/third_page.dart';
 import 'pages/native.dart';
 import 'parts/member_item.dart';
@@ -53,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage>
       body: TabBarView(
         children: <Widget>[
           FirstPage(list: memberList),
-          SecondPage(),
+          //SecondPage(),
+          SettingsPage(),
           ThirdPage(),
           FourthPage(),
           BMIAni(),
