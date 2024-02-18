@@ -16,6 +16,7 @@ class MemoHelper {
   static final columnContent = 'content';
   static final columnActive = 'active';
   List<Memo>? memoList;
+  //Future<List<Memo>>? memoList2;
 
   //late Memo? _memo;
   // only have a single app-wide reference to the database
@@ -51,6 +52,12 @@ class MemoHelper {
     });
     // }
     return _db;
+  }
+
+  Future<int> deleteItem(Memo memo) async {
+    int result =
+        await _db.delete(_tableName, where: "id=?", whereArgs: [memo.id]);
+    return result;
   }
 
   // check exists table
@@ -101,6 +108,7 @@ class MemoHelper {
   }
 
   void getList() async {
+    _db = await openDB();
     final List<Map<String, dynamic>> maps = await _db.query(_tableName);
     print('결과 갯수: ${maps.length}');
     memoList = List.generate(maps.length, (i) {
@@ -110,6 +118,20 @@ class MemoHelper {
           content: maps[i]['content'],
           active: (maps[i]['active'] == 1) ? true : false);
     });
+  }
+
+  Future<List<Memo>> getList2() async {
+    _db = await openDB();
+    final List<Map<String, dynamic>> maps = await _db.query(_tableName);
+    print('결과 갯수: ${maps.length}');
+    var list1 = List.generate(maps.length, (i) {
+      return Memo(
+          id: maps[i]['id'],
+          title: maps[i]['title'],
+          content: maps[i]['content'],
+          active: (maps[i]['active'] == 1) ? true : false);
+    });
+    return list1;
   }
 
   Future showData() async {

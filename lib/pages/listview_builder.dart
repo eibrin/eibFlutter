@@ -22,11 +22,11 @@ class _ListviewBuilderState extends State<ListviewBuilder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('데이터베이스 ${mHelper.memoList!.length}')),
+        appBar: AppBar(title: Text('데이터베이스 CRUD 샘플')),
         body: Container(
           child: Center(
-            child: mylistView(context),
-            /* GridView.count(
+            child: //mylistView(context),
+                /* GridView.count(
                   crossAxisCount: 3, // 열 개수
                   children:
                       List<Widget>.generate(mHelper.memoList!.length, (idx) {
@@ -42,7 +42,7 @@ class _ListviewBuilderState extends State<ListviewBuilder> {
                     );
                   }).toList())*/
 
-            /*FutureBuilder(
+                FutureBuilder(
               builder: (context, snapshot) {
                 print('snapshot : $snapshot');
                 switch (snapshot.connectionState) {
@@ -83,8 +83,8 @@ class _ListviewBuilderState extends State<ListviewBuilder> {
 
                 return Text('No data');
               },
-              future: mHelper.memoList,
-            ),*/
+              future: mHelper.getList2(),
+            ),
           ),
         ));
   }
@@ -94,19 +94,31 @@ class _ListviewBuilderState extends State<ListviewBuilder> {
     return ListView.builder(
       itemCount: (mList != null) ? mList.length : 0,
       itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          title: Text(mList![index].title!),
-          leading: CircleAvatar(
-            child: Text(mList[index].active.toString()),
-          ),
-          trailing: IconButton(
-            icon: Icon(Icons.edit),
-            onPressed: () {},
-          ),
-          onTap: () {
-            //Navigator.push(context, MaterialPageRoute(builder: (context)=>detailPage(mList[index]))),
-          },
-        );
+        return Dismissible(
+            key: UniqueKey(), //Key(mList![index].id.toString()), //UniqueKey(),
+            onDismissed: (direction) {
+              String strName = mList[index].title!;
+              mHelper.deleteItem(mList[index]);
+              setState(() {
+                mList.removeAt(index);
+              });
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("$strName deleted"),
+              ));
+            },
+            child: ListTile(
+              title: Text(mList![index].title!),
+              leading: CircleAvatar(
+                child: Text(mList[index].active.toString()),
+              ),
+              trailing: IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () {},
+              ),
+              onTap: () {
+                //Navigator.push(context, MaterialPageRoute(builder: (context)=>detailPage(mList[index]))),
+              },
+            ));
       },
     );
   }
