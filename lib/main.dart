@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 import 'package:widget_master/pages/animation/bmi_ani.dart';
 import 'package:widget_master/pages/animation/pong_like.dart';
 import 'package:widget_master/pages/fourth_page.dart';
+import 'package:widget_master/pages/listview_builder.dart';
 import 'package:widget_master/pages/settings_page.dart';
 import 'package:widget_master/pages/third_page.dart';
 import 'pages/native.dart';
@@ -10,7 +13,11 @@ import 'pages/first_page.dart';
 import 'pages/second_page.dart';
 import 'pages/third_page.dart';
 
-void main() {
+void main() async {
+  // Avoid errors caused by flutter upgrade.
+// Importing 'package:flutter/widgets.dart' is required.
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -55,7 +62,8 @@ class _MyHomePageState extends State<MyHomePage>
         children: <Widget>[
           FirstPage(list: memberList),
           //SecondPage(),
-          SettingsPage(),
+          //SettingsPage(),
+          ListviewBuilder(),
           ThirdPage(),
           FourthPage(),
           BMIAni(),
